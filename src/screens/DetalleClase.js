@@ -4,16 +4,27 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import useResponsive from "../hooks/useResponsive";
 import {colors,spacing,sombra, typography,radius} from "../theme";
-import { formatearPrecio } from "../data/clases"; 
+import { formatearPrecio } from "../data/clases";
+
 
 
 export default function DetalleClase({route,navigation}){
     const insets =useSafeAreaInsets();
     const {clase}=route.params;
     const{isTable}=useResponsive();
-    const manejarReserva = () => {
-        navigation.navigate("Reserva", { clase });
+   
+    const [cupos, setCupos] = useState(clase.cupos);
+    const  manejarReserva = () => {
+        if (cupos > 0) {
+            setCupos(cupos-1);
+            Alert.alert("cupo reservado");
+        }
+        else{
+             Alert.alert("no hay cupos disponibles");
+        }
     };
+   
+    
 
 
 
@@ -40,8 +51,8 @@ export default function DetalleClase({route,navigation}){
                         </View>
 
                         <View style={styles.dato}>
-                            <Text style={styles.datoValor}>{clase.cupos}</Text>
-                            <Text style={styles.datoTexto}>Cupos</Text>
+                            <Text style={styles.datoValor}>{cupos}</Text>
+                            <Text>{cupos} cupos</Text>
                         </View>
 
                         <View style={styles.dato}>
