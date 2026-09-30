@@ -1,7 +1,9 @@
-import React from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { colors,spacing,sombra,radius } from '../theme';
 
-export default function Reserva() {
+export default function ReservaItem() {
     return (
         <View style={styles.pantalla}>
             <ScrollView>
