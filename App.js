@@ -5,11 +5,13 @@ import ClasesStack from './src/navigation/ClasesStack';
 
 export default function App() {
   return (
-    <SafeAreaProvider>
+  <SafeAreaProvider>
+    <AppProvider>
       <NavigationContainer>
-        <ClasesStack />
+        <Tabs />
         <StatusBar style="auto" />
       </NavigationContainer>
-    </SafeAreaProvider>
+    </AppProvider>
+  </SafeAreaProvider>
   );
 }
